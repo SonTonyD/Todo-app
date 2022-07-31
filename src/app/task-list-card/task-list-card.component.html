@@ -1,0 +1,16 @@
+<ul *ngFor="let todoTask of todoList">
+    <li [hidden]="todoTask.isHidden">
+        <button (click)="validTask(todoTask, $event)">Done</button>
+        {{todoTask.name}}
+        <button (click)="deleteTask(todoTask, todoList, $event)"> X </button>
+    </li>
+</ul>
+
+
+<div>
+    {{todoList.length}} items left
+    <button (click)="allVisible()"> All </button>
+    <button (click)="activeVisible()"> Active </button>
+    <button (click)="completedVisible()"> Completed </button>
+    <button (click)="clearCompleted()"> Clear Completed </button>
+</div>
