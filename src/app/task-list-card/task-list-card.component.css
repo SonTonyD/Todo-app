@@ -30,6 +30,7 @@ li {
     margin-bottom: 20px;
 }
 
+
 .svg-divider {
     width: 430px;
     margin-left: -20px;
@@ -37,8 +38,15 @@ li {
 }
 
 .doneButton {
+    -webkit-appearance:initial;
     margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid grey;
+    border-radius: 10%;
+    outline: none;
 }
+
 
 .taskName {
     display: flex;

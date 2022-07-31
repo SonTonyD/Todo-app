@@ -77,7 +77,7 @@ export class TaskListCardComponent implements OnChanges {
     for (let i = 0; i < todoList.length; i++) {
       if (todoTask.name == todoList[i].name) {
         
-        todoList.slice(i,1);
+        this.todoList.splice(i,1);
         this.delete(event);
       }
     }

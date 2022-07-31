@@ -2,7 +2,7 @@
     <div class="list">
         <ul *ngFor="let todoTask of todoList">
             <li [hidden]="todoTask.isHidden">
-                <button class="doneButton" (click)="validTask(todoTask, $event)">Done</button>
+                <input type="radio" class="doneButton" (click)="validTask(todoTask, $event)">
                 <span class="taskName">{{todoTask.name}}</span> 
                 <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>
             </li>
