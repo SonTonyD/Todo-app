@@ -1,2 +1,6 @@
-<app-input-card (taskNameOutput)="onSubmit($event)"></app-input-card>
-<app-task-list-card [newTaskName]="newTaskName" ></app-task-list-card>
+<div class="container">
+    <h1>TODO</h1>
+    <app-input-card (taskNameOutput)="onSubmit($event)"></app-input-card>
+    <app-task-list-card [newTaskName]="newTaskName" ></app-task-list-card>
+</div>
+

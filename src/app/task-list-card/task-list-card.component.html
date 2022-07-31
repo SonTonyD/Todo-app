@@ -1,16 +1,26 @@
-<ul *ngFor="let todoTask of todoList">
-    <li [hidden]="todoTask.isHidden">
-        <button (click)="validTask(todoTask, $event)">Done</button>
-        {{todoTask.name}}
-        <button (click)="deleteTask(todoTask, todoList, $event)"> X </button>
-    </li>
-</ul>
-
-
-<div>
-    {{todoList.length}} items left
-    <button (click)="allVisible()"> All </button>
-    <button (click)="activeVisible()"> Active </button>
-    <button (click)="completedVisible()"> Completed </button>
-    <button (click)="clearCompleted()"> Clear Completed </button>
+<div class="container">
+    <div class="list">
+        <ul *ngFor="let todoTask of todoList">
+            <li [hidden]="todoTask.isHidden">
+                <button class="doneButton" (click)="validTask(todoTask, $event)">Done</button>
+                <span class="taskName">{{todoTask.name}}</span> 
+                <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>
+            </li>
+            <svg class="svg-divider" viewbox="0 0 1000 20">
+                <g>
+                    <line x1="0" y1="1" x2="475" y2="1" stroke="grey" />
+                </g>
+            </svg>
+        </ul>
+    </div>
+    
+    
+    
+    <div class="info">
+        {{todoList.length}} items left
+        <button (click)="allVisible()"> All </button>
+        <button (click)="activeVisible()"> Active </button>
+        <button (click)="completedVisible()"> Completed </button>
+        <button (click)="clearCompleted()"> Clear Completed </button>
+    </div>
 </div>
