@@ -142,7 +142,7 @@ export class TaskListCardComponent implements OnInit,OnChanges {
       this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
     }
     if (this.buttonActive !=null) {
-      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
     }
 
     for (let i = 0; i < this.todoList.length; i++) {

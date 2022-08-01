@@ -22,8 +22,20 @@ input {
     border: none;
     outline: none;
     font-size: 20px;
+    background-color: transparent;
 }
 
 button {
+    background-color: rgb(39, 132, 198);
+    color: bisque;
+    padding: 5px;
+    border-radius: 7px;
 
+}
+
+button:active {
+    transform: translateY(1px);
+}
+button:hover {
+    opacity: 0.9;
 }

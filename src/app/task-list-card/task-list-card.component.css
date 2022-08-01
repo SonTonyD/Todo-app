@@ -108,6 +108,15 @@ button:hover {
     cursor: pointer;
 }
 
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    padding: initial;
+    border: initial;
+}
+
 
 /*
 .container {
