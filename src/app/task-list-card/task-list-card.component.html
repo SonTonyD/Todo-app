@@ -20,10 +20,13 @@
     
     
     <div class="info">
-        {{todoList.length}} items left
-        <button (click)="allVisible()"> All </button>
-        <button (click)="activeVisible()"> Active </button>
-        <button (click)="completedVisible()"> Completed </button>
-        <button (click)="clearCompleted()"> Clear Completed </button>
+        <div class="left">{{todoList.length}} items left</div>
+        <div class="center">
+            <button  (click)="allVisible($event)"> All </button>
+            <button  (click)="activeVisible($event)"> Active </button>
+            <button  (click)="completedVisible($event)"> Completed </button>
+        </div>
+        
+        <button class="right" (click)="clearCompleted()"> Clear Completed </button>
     </div>
 </div>

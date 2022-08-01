@@ -35,6 +35,10 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     
   }
 
+  buttonAll!: any;
+  buttonActive!: any;
+  buttonCompleted!: any;
+
   
 
   todoList: todoTask[] = [
@@ -93,14 +97,32 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     element.remove();
   }
 
-  allVisible() {
+  allVisible(event: any) {
+    this.buttonAll = event.target
+    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    if (this.buttonActive != null) {
+      this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+    if (this.buttonCompleted !=null) {
+      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+
     for (let i = 0; i < this.todoList.length; i++) {
       this.todoList[i].isHidden = false;
     }
     console.log(this.todoList)
   }
 
-  activeVisible() {
+  activeVisible(event: any) {
+    this.buttonActive = event.target
+    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    if (this.buttonAll != null) {
+      this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+    if (this.buttonCompleted !=null) {
+      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+
     for (let i = 0; i < this.todoList.length; i++) {
       if (this.todoList[i].isDone == false) {
         this.todoList[i].isHidden = false
@@ -113,7 +135,16 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     console.log(this.todoList)
   }
 
-  completedVisible() {
+  completedVisible(event: any) {
+    this.buttonCompleted = event.target
+    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;");
+    if (this.buttonAll != null) {
+      this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+    if (this.buttonActive !=null) {
+      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+    }
+
     for (let i = 0; i < this.todoList.length; i++) {
       if (this.todoList[i].isDone == true) {
         this.todoList[i].isHidden = false
