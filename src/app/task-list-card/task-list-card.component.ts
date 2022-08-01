@@ -11,7 +11,7 @@ type todoTask = {
   templateUrl: './task-list-card.component.html',
   styleUrls: ['./task-list-card.component.css']
 })
-export class TaskListCardComponent implements OnChanges {
+export class TaskListCardComponent implements OnInit,OnChanges {
 
   constructor() { }
 
@@ -29,6 +29,10 @@ export class TaskListCardComponent implements OnChanges {
         }
       )
     }
+  }
+
+  ngOnInit(): void {
+    
   }
 
   
@@ -77,7 +81,7 @@ export class TaskListCardComponent implements OnChanges {
     for (let i = 0; i < todoList.length; i++) {
       if (todoTask.name == todoList[i].name) {
         
-        this.todoList.splice(i,1);
+        todoList.splice(i,1);
         this.delete(event);
       }
     }
@@ -93,6 +97,7 @@ export class TaskListCardComponent implements OnChanges {
     for (let i = 0; i < this.todoList.length; i++) {
       this.todoList[i].isHidden = false;
     }
+    console.log(this.todoList)
   }
 
   activeVisible() {
@@ -105,6 +110,7 @@ export class TaskListCardComponent implements OnChanges {
       }
       
     }
+    console.log(this.todoList)
   }
 
   completedVisible() {
@@ -117,6 +123,7 @@ export class TaskListCardComponent implements OnChanges {
       }
       
     }
+    console.log(this.todoList)
   }
 
   deleteList: todoTask[] = [
@@ -129,7 +136,6 @@ export class TaskListCardComponent implements OnChanges {
 
   clearCompleted() {
     for (let i = 0; i < this.todoList.length; i++) {
-      console.log(i)
       if (this.todoList[i].isDone == true) {
         //utilisation de pop
         console.log("tache supprimée", this.todoList[i])
@@ -144,10 +150,6 @@ export class TaskListCardComponent implements OnChanges {
         }
       }
     }
-
-
-
-
   }
 
  
