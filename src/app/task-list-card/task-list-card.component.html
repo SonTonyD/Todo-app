@@ -3,14 +3,17 @@
         <ul *ngFor="let todoTask of todoList">
             <li [style.display]="todoTask.isHidden? 'none': 'grid'" class="list-element">
                 <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)">
-                <span class="taskName" [ngStyle]="{'color': fontColor}">{{todoTask.name}}</span> 
+                <span #el class="taskName" [ngStyle]="{'color': fontColor}" (click)="onClick()">{{todoTask.name}}</span> 
                 <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>
 
-                <svg class="svg-divider" viewbox="0 0 1000 20">
-                    <g>
-                        <line x1="0" y1="1" x2="475" y2="1" stroke="grey" />
-                    </g>
-                </svg>
+                <div class="svg-container">
+                    <svg class="svg-divider">
+                        <g>
+                            <line x1="0" y1="1" x2="3000" y2="1" stroke="grey" />
+                        </g>
+                    </svg>
+                </div>
+                
             </li>
             
             
@@ -22,9 +25,9 @@
     <div class="info">
         <div class="left" [ngStyle]="{'color': fontColor}">{{todoList.length}} items left</div>
         <div class="center" >
-            <button [ngStyle]="{'color': fontColorGreyAll}"  (click)="allVisible($event)" > All </button>
-            <button [ngStyle]="{'color': fontColorGreyActive}" (click)="activeVisible($event)"> Active </button>
-            <button [ngStyle]="{'color': fontColorGreyCompleted}" (click)="completedVisible($event)"> Completed </button>
+            <button class="button-center" [ngStyle]="{'color': fontColorGreyAll}"  (click)="allVisible($event)" > All </button>
+            <button class="button-center" [ngStyle]="{'color': fontColorGreyActive}" (click)="activeVisible($event)"> Active </button>
+            <button class="button-center" [ngStyle]="{'color': fontColorGreyCompleted}" (click)="completedVisible($event)"> Completed </button>
         </div>
         
         <button class="right" [ngStyle]="{'color': fontColor}" (click)="clearCompleted()"> Clear Completed </button>

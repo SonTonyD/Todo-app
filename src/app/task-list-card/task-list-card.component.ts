@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
+
 type todoTask = {
   name: string;
   isDone: boolean;
@@ -92,6 +93,9 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   filterButton : boolean[] = [this.buttonAllIsActive, this.buttonActiveIsActive, this.buttonCompletedIsActive]
 
+
+  
+
   
 
   todoList: todoTask[] = [
@@ -152,14 +156,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   allVisible(event: any) {
     this.buttonAll = event.target
-    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    event.target.setAttribute("style","text-align: center;border: none;color: blue;background-color: transparent;")
     this.buttonAllIsActive = true
     if (this.buttonActive != null) {
-      this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonActive.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonActiveIsActive = false
     }
     if (this.buttonCompleted !=null) {
-      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonCompleted.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonCompletedIsActive = false
     }
 
@@ -171,14 +175,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   activeVisible(event: any) {
     this.buttonActive = event.target
-    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    event.target.setAttribute("style","text-align: center;border: none;color: blue;background-color: transparent;")
     this.buttonActiveIsActive = true
     if (this.buttonAll != null) {
-      this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonAll.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonAllIsActive = true
     }
     if (this.buttonCompleted !=null) {
-      this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonCompleted.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonCompletedIsActive = false
     }
 
@@ -196,14 +200,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   completedVisible(event: any) {
     this.buttonCompleted = event.target
-    event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;");
+    event.target.setAttribute("style","text-align: center;border: none;color: blue;background-color: transparent;");
     this.buttonCompletedIsActive = true;
     if (this.buttonAll != null) {
-      this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonAll.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonAllIsActive = false;
     }
     if (this.buttonActive !=null) {
-      this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonActive.setAttribute("style","text-align: center;border: none;color: rgb(91, 91, 91);background-color: transparent;")
       this.buttonActiveIsActive = false
     }
 
@@ -243,6 +247,10 @@ export class TaskListCardComponent implements OnInit,OnChanges {
         }
       }
     }
+  }
+
+  onClick() {
+
   }
 
  

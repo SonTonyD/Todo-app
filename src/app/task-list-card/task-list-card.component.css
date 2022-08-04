@@ -3,8 +3,8 @@
     background-color: white;
     margin-top: 40px;
     grid-template: 90% 10%/1fr;
-    margin-left: 425px;
-    margin-right: 425px;
+    margin-left: 33.17vw;
+    margin-right: 33.17vw;
     padding-left: 20px;
 
     padding-top: 20px;
@@ -29,9 +29,12 @@ ul {
     padding-right: 20px;
 }
 
+.svg-container {
+    width: 33.56vw;
+}
 
 .svg-divider {
-    width: 430px;
+    width: 100%;
     margin-left: -20px;
     height: 20px;
     margin-top: 20px;
@@ -57,6 +60,7 @@ ul {
 .taskName {
     display: flex;
     justify-content: left;
+    cursor: move;
 }
 
 
@@ -132,3 +136,58 @@ input[type="checkbox" i] {
 
 }
 */
+
+@media(max-width: 1000px) {
+    
+    .taskName {
+        font-size: 1.5vw;
+    }
+
+    .left {
+        font-size: 1vw;
+    }
+
+    .right {
+        font-size: 0.75vw;
+    }
+
+    .button-center {
+        font-size: 1vw;
+    }
+
+    button:hover {
+        font-size: 1.05vw;
+    }
+
+    .svg-container {
+        width: 32.27vw;
+    }
+
+    .svg-divider {
+        width: 100%;
+        margin-left: -20px;
+        height: 1.50vw;
+        margin-top: 1.50vw;
+    }
+
+    .container {
+        padding-bottom: 1.56vw;
+        margin-top: 3.1vw;
+    }
+
+    .list-element {
+        display: grid;
+        grid-template: 1fr / 4.68vw 1fr 3.90vw;
+        padding-right: 1.56vw;
+    }
+
+    .doneButton {
+        -webkit-appearance:none;
+        margin-right: 1.56vw;
+        width: 1.56vw;
+        height: 1.56vw;
+        border: 1px solid grey;
+        border-radius: 10%;
+        outline: none;
+    }
+}

@@ -1,6 +1,6 @@
 .background {
     background-color: #fafafa;
-    height: 817px;
+    height: 63.77vw;
 }
 
 .container {
@@ -8,21 +8,50 @@
     height: 300px;
     width: 100%;
     background-repeat:no-repeat;
-}
-
-h1 {
-    color: rgb(255, 255, 255);
-    margin-left: 425px;
-    margin-top: 70px;
-    letter-spacing: 8px;
-}
-
-.night-mode {
-    margin-left: 280px;
-    margin-top: 75px;
+    background-size: cover;
 }
 
 .head-bar {
+    display: grid;
+    grid-template: 1fr/93% 7%;
+    margin-left: 33.17vw;
+    width: 33.56vw;
+}
+
+.title {
+    grid-area: 1/1/2/2;
+    color: rgb(255, 255, 255);
+    letter-spacing: 8px;
+    cursor: auto;
+    user-select: none;
+    width: 120px;
+    height: 35px;
+    margin-top: 50px;
+    font-size: 35px;
+    
+}
+
+.night-mode {
+    grid-area: 1/2/2/3;
+    cursor: pointer;
+    width: 1.95vw;
     display: flex;
-    flex-direction: row;
+    justify-content: right;
+    margin-top: 50px;
+    
+}
+
+img {
+}
+
+@media(max-width: 1000px) {
+    .title {
+        color: rgb(212, 13, 13);
+        font-size: 2.73vw;
+    }
+
+    img {
+        width: 1.79vw;
+        height: 1.79vw;
+    }
 }

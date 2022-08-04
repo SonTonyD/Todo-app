@@ -2,8 +2,8 @@
     display: flex;
     column-gap: 20px;
     background-color: rgb(255, 255, 255);
-    margin-left: 425px;
-    margin-right: 425px;
+    margin-left: 33.17vw;
+    margin-right: 33.17vw;
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -38,4 +38,30 @@ button:active {
 }
 button:hover {
     opacity: 0.9;
+}
+
+@media (max-width: 1000px) {
+    input {
+        width: 25.76vw;
+        font-size: 1.56vw;
+    }
+
+    .container {
+        display: flex;
+        column-gap: 1.56vw;
+        background-color: rgb(255, 255, 255);
+        margin-left: 33.17vw;
+        margin-right: 33.17vw;
+        padding-left: 1.56vw;
+        padding-top: 1.56vw;
+        padding-bottom: 1.56vw;
+        margin-top: 3.90vw;
+    
+        box-shadow:
+        0px 0px 10px rgba(0, 0, 0, 0.17),
+        0px 0px 80px rgba(0, 0, 0, 0.34)
+        ;
+    
+    }
+
 }
