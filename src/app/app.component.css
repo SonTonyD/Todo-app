@@ -1,5 +1,28 @@
+.background {
+    background-color: #fafafa;
+    height: 817px;
+}
+
+.container {
+    background-image: url("/assets/bg-desktop-light.jpg");
+    height: 300px;
+    width: 100%;
+    background-repeat:no-repeat;
+}
+
 h1 {
-    color: white;
+    color: rgb(255, 255, 255);
     margin-left: 425px;
     margin-top: 70px;
+    letter-spacing: 8px;
+}
+
+.night-mode {
+    margin-left: 280px;
+    margin-top: 75px;
+}
+
+.head-bar {
+    display: flex;
+    flex-direction: row;
 }

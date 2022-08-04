@@ -1,6 +1,16 @@
-<div class="container">
-    <h1>TODO</h1>
-    <app-input-card (taskNameOutput)="onSubmit($event)"></app-input-card>
-    <app-task-list-card [newTaskName]="newTaskName" ></app-task-list-card>
+<div class="background" [ngStyle]="{'background-color': color}">
+    <div class="container" [ngStyle]="{'background-image': backgroundImage}">
+        <div class="head-bar">
+            <h1>TODO</h1>
+            <div class="night-mode">
+                <img src="/assets/icon-sun.svg" style="background-repeat: no-repeat;" alt="" (click)="toggleNightMode()" *ngIf = "!isNight">
+                <img src="/assets/icon-moon.svg" style="background-repeat: no-repeat;" alt="" (click)="toggleNightMode()" *ngIf = "isNight">
+            </div>
+        </div>
+        <app-input-card (taskNameOutput)="onSubmit($event)" [isNight]="isNight"></app-input-card>
+        <app-task-list-card [newTaskName]="newTaskName" [isNight]="isNight" ></app-task-list-card>
+    </div>
 </div>
+
+
 

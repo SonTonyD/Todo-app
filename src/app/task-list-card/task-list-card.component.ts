@@ -16,11 +16,28 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   constructor() { }
 
   @Input() newTaskName!: string;
+  @Input() isNight!: boolean;
+
+  color!: string;
+  fontColor!: string;
+  fontColorGrey!: string;
+
+  fontColorGreyAll!: string;
+  fontColorGreyActive!: string;
+  fontColorGreyCompleted!: string;
+
+  filterColor : string[] = [this.fontColorGreyAll, this.fontColorGreyActive, this.fontColorGreyCompleted]
+
+  ngAfterViewInit() {
+    this.color = "white";
+    this.fontColor = "black";
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['newTaskName'].currentValue)
+    console.log(changes)
 
-    if (changes['newTaskName'].currentValue != "" && changes['newTaskName'].firstChange == false) {
+    if (changes['newTaskName'] != undefined) {
+      if (changes['newTaskName'].currentValue != "" && changes['newTaskName'].firstChange == false) {
       this.todoList.push(
         {
           name: changes['newTaskName'].currentValue,
@@ -29,7 +46,37 @@ export class TaskListCardComponent implements OnInit,OnChanges {
         }
       )
     }
+    }
+
+    
+
+    if (changes['isNight'].currentValue) {
+      this.color = "hsl(235, 24%, 19%)";
+      this.fontColor = "hsl(234, 39%, 85%)";
+
+      //check if button isActive, then change the color to active color
+      for (let i = 0; i < this.filterButton.length; i++) {
+        const element = this.todoList[i];
+        if (element) {
+          this.filterColor[i] = "red";
+        }
+        else {
+          this.filterColor[i] = "hsl(233, 14%, 35%)"
+        }
+        
+      }
+    }
+    else {
+      this.color = "white";
+      this.fontColor = "black";
+    }
+
+    
+
+
   }
+
+
 
   ngOnInit(): void {
     
@@ -38,6 +85,12 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   buttonAll!: any;
   buttonActive!: any;
   buttonCompleted!: any;
+
+  buttonAllIsActive !: boolean;
+  buttonActiveIsActive !: boolean;
+  buttonCompletedIsActive !: boolean;
+
+  filterButton : boolean[] = [this.buttonAllIsActive, this.buttonActiveIsActive, this.buttonCompletedIsActive]
 
   
 
@@ -100,11 +153,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   allVisible(event: any) {
     this.buttonAll = event.target
     event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    this.buttonAllIsActive = true
     if (this.buttonActive != null) {
       this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonActiveIsActive = false
     }
     if (this.buttonCompleted !=null) {
       this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonCompletedIsActive = false
     }
 
     for (let i = 0; i < this.todoList.length; i++) {
@@ -116,11 +172,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   activeVisible(event: any) {
     this.buttonActive = event.target
     event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;")
+    this.buttonActiveIsActive = true
     if (this.buttonAll != null) {
       this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonAllIsActive = true
     }
     if (this.buttonCompleted !=null) {
       this.buttonCompleted.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonCompletedIsActive = false
     }
 
     for (let i = 0; i < this.todoList.length; i++) {
@@ -138,11 +197,14 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   completedVisible(event: any) {
     this.buttonCompleted = event.target
     event.target.setAttribute("style","text-align: center;font-size: 12px;border: none;color: blue;background-color: transparent;");
+    this.buttonCompletedIsActive = true;
     if (this.buttonAll != null) {
       this.buttonAll.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonAllIsActive = false;
     }
     if (this.buttonActive !=null) {
       this.buttonActive.setAttribute("style","text-align: center;font-size: 12px;border: none;color: rgb(91, 91, 91);background-color: transparent;")
+      this.buttonActiveIsActive = false
     }
 
     for (let i = 0; i < this.todoList.length; i++) {

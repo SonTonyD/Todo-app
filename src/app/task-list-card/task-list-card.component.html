@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" [ngStyle]="{'background-color': color}">
     <div class="list">
         <ul *ngFor="let todoTask of todoList">
             <li [style.display]="todoTask.isHidden? 'none': 'grid'" class="list-element">
                 <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)">
-                <span class="taskName">{{todoTask.name}}</span> 
+                <span class="taskName" [ngStyle]="{'color': fontColor}">{{todoTask.name}}</span> 
                 <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>
 
                 <svg class="svg-divider" viewbox="0 0 1000 20">
@@ -20,13 +20,13 @@
     
     
     <div class="info">
-        <div class="left">{{todoList.length}} items left</div>
-        <div class="center">
-            <button  (click)="allVisible($event)"> All </button>
-            <button  (click)="activeVisible($event)"> Active </button>
-            <button  (click)="completedVisible($event)"> Completed </button>
+        <div class="left" [ngStyle]="{'color': fontColor}">{{todoList.length}} items left</div>
+        <div class="center" >
+            <button [ngStyle]="{'color': fontColorGreyAll}"  (click)="allVisible($event)" > All </button>
+            <button [ngStyle]="{'color': fontColorGreyActive}" (click)="activeVisible($event)"> Active </button>
+            <button [ngStyle]="{'color': fontColorGreyCompleted}" (click)="completedVisible($event)"> Completed </button>
         </div>
         
-        <button class="right" (click)="clearCompleted()"> Clear Completed </button>
+        <button class="right" [ngStyle]="{'color': fontColor}" (click)="clearCompleted()"> Clear Completed </button>
     </div>
 </div>
