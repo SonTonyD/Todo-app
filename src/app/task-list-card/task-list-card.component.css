@@ -1,7 +1,10 @@
 @font-face {
     font-family: 'JosefinSans';
     src: url('/assets/fonts/JosefinSans-VariableFont_wght.ttf');
- }
+}
+
+.attribution { font-size: 11px; text-align: center; background-color: rgb(145, 142, 142); margin-left: 38vw; margin-right: 38vw; margin-top: 10vw;}
+.attribution a { color: hsl(228, 45%, 44%); }
 
 .container {
     display: grid;
@@ -349,4 +352,7 @@ input[type="checkbox" i] {
         column-gap: -20px;
         
     }
+
+    .attribution { font-size: 7px; text-align: center; background-color: rgb(145, 142, 142); margin-left: 20vw; margin-right: 20vw; margin-top: 10vw;}
+    .attribution a { color: hsl(228, 45%, 44%); }
 }
