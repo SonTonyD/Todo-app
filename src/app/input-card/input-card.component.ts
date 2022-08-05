@@ -14,20 +14,26 @@ export class InputCardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['isNight'].currentValue)
-    if (changes['isNight'].currentValue) {
-      this.color = "hsl(235, 24%, 19%)";
-    } 
-    else {
-      this.color = "white";
+    if (changes['isNight'] != undefined) {
+      if (changes['isNight'].currentValue) {
+        this.color = "hsl(235, 24%, 19%)";
+        this.fontColor = "hsl(234, 39%, 85%)"
+      } 
+      else {
+        this.color = "white";
+        this.fontColor = "black"
+      }
     }
+    
     
   }
 
   color!: string;
+  fontColor!: string;
 
   ngAfterViewInit() {
     this.color = "white"
+    this.fontColor = "black"
   }
 
   taskName!: string;

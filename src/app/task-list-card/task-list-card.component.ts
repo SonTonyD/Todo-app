@@ -50,31 +50,29 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     }
 
     
-
-    if (changes['isNight'].currentValue) {
-      this.color = "hsl(235, 24%, 19%)";
-      this.fontColor = "hsl(234, 39%, 85%)";
-
-      //check if button isActive, then change the color to active color
-      for (let i = 0; i < this.filterButton.length; i++) {
-        const element = this.todoList[i];
-        if (element) {
-          this.filterColor[i] = "red";
+    if (changes['isNight'] != undefined) {
+      if (changes['isNight'].currentValue) {
+        this.color = "hsl(235, 24%, 19%)";
+        this.fontColor = "hsl(234, 39%, 85%)";
+  
+        //check if button isActive, then change the color to active color
+        for (let i = 0; i < this.filterButton.length; i++) {
+          const element = this.todoList[i];
+          if (element) {
+            this.filterColor[i] = "red";
+          }
+          else {
+            this.filterColor[i] = "hsl(233, 14%, 35%)"
+          }
+          
         }
-        else {
-          this.filterColor[i] = "hsl(233, 14%, 35%)"
-        }
-        
+      }
+      else {
+        this.color = "white";
+        this.fontColor = "black";
       }
     }
-    else {
-      this.color = "white";
-      this.fontColor = "black";
-    }
-
     
-
-
   }
 
 
