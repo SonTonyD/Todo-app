@@ -46,7 +46,7 @@ img {
 
 @media(max-width: 1000px) {
     .title {
-        color: rgb(212, 13, 13);
+        color: rgb(255, 255, 255);
         font-size: 2.73vw;
     }
 
@@ -54,4 +54,36 @@ img {
         width: 1.79vw;
         height: 1.79vw;
     }
+}
+
+@media(max-width: 500px) {
+    .title {
+        color: rgb(255, 255, 255);
+        font-size: 8vw;
+    }
+
+    img {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .head-bar {
+        display: grid;
+        grid-template: 1fr/93% 7%;
+        margin-left: 8vw;
+        width: 87vw;
+    }
+
+    .container {
+        background-image: url("/assets/bg-mobile-light.jpg");
+        height: 210px;
+        width: 100%;
+        background-repeat:no-repeat;
+        background-size: cover;
+    }
+
+    .background {
+        height: 216.5vw;
+    }
+
 }

@@ -98,22 +98,27 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   todoList: todoTask[] = [
     {
-      name: "buy tomatos",
+      name: "Complete online JavaScript course",
       isDone: false,
       isHidden: false,
     },
     {
-      name: "buy ggmeat",
+      name: "Jog around the park x3",
       isDone: false,
       isHidden: false,
     },
     {
-      name: "clean the room",
+      name: "Read for 1hour",
       isDone: false,
       isHidden: false,
     },
     {
-      name: "take shower",
+      name: "Pick up groceries",
+      isDone: false,
+      isHidden: false,
+    },
+    {
+      name: "Complete Todo App on Frontend Mentor",
       isDone: false,
       isHidden: false,
     },

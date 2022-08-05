@@ -33,3 +33,11 @@
         <button class="right" [ngStyle]="{'color': fontColor}" (click)="clearCompleted()"> Clear Completed </button>
     </div>
 </div>
+
+<div class="mobileFilterCard" [ngStyle]="{'background-color': color}">
+    <div class="center-mobile">
+        <button class="button-center-mobile" [ngStyle]="{'color': fontColorGreyAll}"  (click)="allVisible($event)" > All </button>
+        <button class="button-center-mobile" [ngStyle]="{'color': fontColorGreyActive}" (click)="activeVisible($event)"> Active </button>
+        <button class="button-center-mobile" [ngStyle]="{'color': fontColorGreyCompleted}" (click)="completedVisible($event)"> Completed </button>
+    </div> 
+</div>
