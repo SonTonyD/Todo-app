@@ -95,7 +95,8 @@ export class TaskListCardComponent implements OnInit,OnChanges {
   
 
   
-
+  //example
+  /*
   todoList: todoTask[] = [
     {
       name: "Complete online JavaScript course",
@@ -123,7 +124,10 @@ export class TaskListCardComponent implements OnInit,OnChanges {
       isHidden: false,
     },
   ];
+  */
 
+  //empty todoList
+  todoList: todoTask[] = [];
   
 
 
