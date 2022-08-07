@@ -1,7 +1,7 @@
 <div class="container" [ngStyle]="{'background-color': color}">
     <div class="list">
         <ul *ngFor="let todoTask of todoList">
-            <li [style.display]="todoTask.isHidden? 'none': 'grid'" class="list-element">
+            <li [style.display]="todoTask.isHidden == '1' ? 'none': 'grid'" class="list-element">
                 <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)">
                 <span #el class="taskName" [ngStyle]="{'color': fontColor}" (click)="onClick()">{{todoTask.name}}</span> 
                 <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>

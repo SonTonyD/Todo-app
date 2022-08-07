@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements DoCheck {
+
+  ngDoCheck(): void {
+    console.log("coucou")
+  }
   title = 'Todo-app';
+  endAnimation : boolean = false;
   isNight = false;
+  isLogged = false;
 
   newTaskName!: string;
   color !: string;
@@ -16,6 +22,13 @@ export class AppComponent {
   onSubmit(event: any) {
     console.log("Input value received: ",event);
     this.newTaskName = event;
+  }
+
+  onLogin(event: boolean) {
+    console.log("user is logged: ", event)
+    this.isLogged = event;
+    setTimeout(() => this.endAnimation=true, 1200);
+    
   }
 
   ngAfterViewInit() {
@@ -37,6 +50,8 @@ export class AppComponent {
       this.backgroundImage = 'url("/assets/bg-desktop-dark.jpg")';
     }
   }
+
+  
 
 
 }

@@ -1,10 +1,13 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TodoAppService } from '../todo-app.service';
 
 
-type todoTask = {
+export type todoTask = {
+  task_id : number;
   name: string;
-  isDone: boolean;
-  isHidden: boolean;
+  isDone: string;
+  isHidden: string;
 };
 
 @Component({
@@ -14,7 +17,9 @@ type todoTask = {
 })
 export class TaskListCardComponent implements OnInit,OnChanges {
 
-  constructor() { }
+  constructor(
+    private _todoService : TodoAppService,
+  ) { }
 
   @Input() newTaskName!: string;
   @Input() isNight!: boolean;
@@ -29,9 +34,16 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   filterColor : string[] = [this.fontColorGreyAll, this.fontColorGreyActive, this.fontColorGreyCompleted]
 
+  todoList$!: Observable<todoTask[]>;
+
   ngAfterViewInit() {
     this.color = "white";
     this.fontColor = "black";
+    this.todoList$ = this._todoService.getTodoListElement();
+
+    this._todoService.getTodoListElement().subscribe(
+      (res) => {this.todoList = res}
+    )
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,10 +52,11 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     if (changes['newTaskName'] != undefined) {
       if (changes['newTaskName'].currentValue != "" && changes['newTaskName'].firstChange == false) {
       this.todoList.push(
-        {
+        { 
+          task_id : 0,
           name: changes['newTaskName'].currentValue,
-          isDone: false,
-          isHidden: false,
+          isDone: "0",
+          isHidden: "0",
         }
       )
     }
@@ -133,13 +146,12 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   validTask(todoTaks: todoTask, event: any) {
     const element = event.target.parentElement;
-
-    if (todoTaks.isDone == false) {
-      todoTaks.isDone = true
+    if (todoTaks.isDone == "0") {
+      todoTaks.isDone = "1"
       element.setAttribute("style", "opacity:0.5; text-decoration: line-through")
     }
     else {
-      todoTaks.isDone = false
+      todoTaks.isDone = "0"
       element.setAttribute("style", "opacity:1")
     }    
     console.log("The task ", todoTaks.name, " change status: isDone= ", todoTaks.isDone);
@@ -175,7 +187,7 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     }
 
     for (let i = 0; i < this.todoList.length; i++) {
-      this.todoList[i].isHidden = false;
+      this.todoList[i].isHidden = "0";
     }
     console.log(this.todoList)
   }
@@ -194,11 +206,11 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     }
 
     for (let i = 0; i < this.todoList.length; i++) {
-      if (this.todoList[i].isDone == false) {
-        this.todoList[i].isHidden = false
+      if (this.todoList[i].isDone == "0") {
+        this.todoList[i].isHidden = "0"
       }
       else {
-        this.todoList[i].isHidden = true
+        this.todoList[i].isHidden = "1"
       }
       
     }
@@ -219,11 +231,11 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     }
 
     for (let i = 0; i < this.todoList.length; i++) {
-      if (this.todoList[i].isDone == true) {
-        this.todoList[i].isHidden = false
+      if (this.todoList[i].isDone == "1") {
+        this.todoList[i].isHidden = "0"
       }
       else {
-        this.todoList[i].isHidden = true
+        this.todoList[i].isHidden = "1"
       }
       
     }
@@ -232,15 +244,16 @@ export class TaskListCardComponent implements OnInit,OnChanges {
 
   deleteList: todoTask[] = [
     {
+      task_id : 0, 
       name: "",
-      isDone: false,
-      isHidden: false,
+      isDone: "0",
+      isHidden: "0",
     },
   ];
 
   clearCompleted() {
     for (let i = 0; i < this.todoList.length; i++) {
-      if (this.todoList[i].isDone == true) {
+      if (this.todoList[i].isDone == "1") {
         //utilisation de pop
         console.log("tache supprimée", this.todoList[i])
         this.deleteList.push(this.todoList[i])

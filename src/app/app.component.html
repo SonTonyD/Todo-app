@@ -7,8 +7,9 @@
                 <img src="/assets/icon-moon.svg" style="background-repeat: no-repeat;" alt="" (click)="toggleNightMode()" *ngIf = "isNight">
             </div>
         </div>
-        <app-input-card (taskNameOutput)="onSubmit($event)" [isNight]="isNight"></app-input-card>
-        <app-task-list-card [newTaskName]="newTaskName" [isNight]="isNight" ></app-task-list-card>
+        <app-input-card *ngIf="isLogged" (taskNameOutput)="onSubmit($event)" [isNight]="isNight"></app-input-card>
+        <app-task-list-card *ngIf="isLogged" [newTaskName]="newTaskName" [isNight]="isNight" ></app-task-list-card>
+        <app-sign-in (isLogged)="onLogin($event)" *ngIf="!isLogged" ></app-sign-in>
     </div>
 </div>
 
