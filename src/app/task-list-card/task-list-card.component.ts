@@ -8,6 +8,7 @@ export type todoTask = {
   name: string;
   isDone: string;
   isHidden: string;
+  user_id: string | null;
 };
 
 @Component({
@@ -57,9 +58,28 @@ export class TaskListCardComponent implements OnInit,OnChanges {
           name: changes['newTaskName'].currentValue,
           isDone: "0",
           isHidden: "0",
+          user_id: localStorage.getItem('id'),
         }
       )
-    }
+      this._todoService.postTodoListElement({ 
+        task_id : 0, //it's a temporarily value
+        name: changes['newTaskName'].currentValue,
+        isDone: "0",
+        isHidden: "0",
+        user_id: localStorage.getItem('id'),
+      }).subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      )
+
+      //Get value after postRequest because the server had to assign a valid task_id (auto-increment)
+      
+      this.todoList$ = this._todoService.getTodoListElement();
+      this._todoService.getTodoListElement().subscribe(
+        (res) => {this.todoList = res; console.log("Received from server: ",res)}
+      )
+      
+      }
     }
 
     
@@ -252,6 +272,7 @@ export class TaskListCardComponent implements OnInit,OnChanges {
       name: "",
       isDone: "0",
       isHidden: "0",
+      user_id: localStorage.getItem('id'),
     },
   ];
 
