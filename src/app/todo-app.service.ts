@@ -32,7 +32,8 @@ export class TodoAppService {
     return this.http.post(this.IP_ADDRESS + this._postTodoListElement, element ,this.httpOptions);
   }
 
-  deleteTodoListElement(elements : todoTask[]) {
+  deleteTodoListElement(element: todoTask) {
+    return this.http.post(this.IP_ADDRESS + this._deleteTodoListElement, element, this.httpOptions);
 
   }
 

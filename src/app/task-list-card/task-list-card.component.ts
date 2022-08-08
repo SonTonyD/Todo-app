@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { TodoAppService } from '../todo-app.service';
 
 
@@ -73,11 +73,11 @@ export class TaskListCardComponent implements OnInit,OnChanges {
       )
 
       //Get value after postRequest because the server had to assign a valid task_id (auto-increment)
-      
-      this.todoList$ = this._todoService.getTodoListElement();
-      this._todoService.getTodoListElement().subscribe(
-        (res) => {this.todoList = res; console.log("Received from server: ",res)}
+      timer(500).subscribe(
+        () => {this.getAllTodolist();}
       )
+
+      
       
       }
     }
@@ -185,8 +185,13 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     for (let i = 0; i < todoList.length; i++) {
       if (todoTask.name == todoList[i].name) {
         
-        todoList.splice(i,1);
+        //todoList.splice(i,1);
+        this._todoService.deleteTodoListElement(todoList[i]).subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        )
         this.delete(event);
+        this.getAllTodolist();
       }
     }
   }
@@ -195,6 +200,7 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     const element = event.target.parentElement;
     console.log(element);
     element.remove();
+    
   }
 
   allVisible(event: any) {
@@ -288,10 +294,23 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     for (let i = 0; i < this.todoList.length; i++) {
       for (let j = 0; j < this.deleteList.length; j++) {
         if (this.todoList[i] == this.deleteList[j]) {
-          this.todoList.splice(i,1);
+          //this.todoList.splice(i,1);
+          this._todoService.deleteTodoListElement(this.deleteList[j]).subscribe(
+            res => console.log(res),
+            err => console.log(err)
+          )
         }
       }
     }
+    this.getAllTodolist();
+  }
+
+  getAllTodolist() {
+    this.todoList$ = this._todoService.getTodoListElement();
+
+    this._todoService.getTodoListElement().subscribe(
+      (res) => {this.todoList = res; console.log("Received from server: ",res)}
+    )
   }
 
   onClick() {
