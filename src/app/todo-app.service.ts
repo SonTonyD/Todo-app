@@ -38,7 +38,7 @@ export class TodoAppService {
 
   putEditTodoListElement( element : todoTask ) {
     console.log("putEditTodoListElement send: ", element)
-    return this.http.put(this.IP_ADDRESS + this._getTodoListElement, element ,this.httpOptions);
+    return this.http.put(this.IP_ADDRESS + this._putEditTodoListElement, element ,this.httpOptions);
   }
  
 

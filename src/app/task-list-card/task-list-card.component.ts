@@ -154,8 +154,11 @@ export class TaskListCardComponent implements OnInit,OnChanges {
       todoTaks.isDone = "0"
       element.setAttribute("style", "opacity:1")
     }
-    this._todoService.putEditTodoListElement(todoTaks);    
-    console.log("The task ", todoTaks.name, " change status: isDone= ", todoTaks.isDone);
+    this._todoService.putEditTodoListElement(todoTaks).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );    
+    console.log("The task ", todoTaks.name, " change status: isDone= ", todoTaks.isDone , "Object: ", todoTaks);
   }
 
   deleteTask(todoTask: todoTask, todoList: todoTask[], event: any) {
