@@ -2,9 +2,18 @@
     <div class="list">
         <ul *ngFor="let todoTask of todoList">
             <li [style.display]="todoTask.isHidden == '1' ? 'none': 'grid'" class="list-element">
-                <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)">
-                <span #el class="taskName" [ngStyle]="{'color': fontColor}" (click)="onClick()">{{todoTask.name}}</span> 
-                <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button>
+                <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)" *ngIf="todoTask.isDone == '1'; then isDone; else isNotDone" >
+                <ng-template #isDone>
+                    <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)" style="opacity: 0.5; text-decoration: line-through" checked >
+                    <span #el class="taskName" [ngStyle]="{'color': fontColor}" style="opacity: 0.5; text-decoration: line-through" (click)="onClick()">{{todoTask.name}}</span>
+                    <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)" style="opacity: 0.5; text-decoration: line-through"> X </button> 
+                </ng-template>
+
+                <ng-template #isNotDone>
+                    <input type="checkbox" class="doneButton" (click)="validTask(todoTask, $event)" >
+                    <span #el class="taskName" [ngStyle]="{'color': fontColor}" (click)="onClick()">{{todoTask.name}}</span>
+                    <button class="deleteButton" (click)="deleteTask(todoTask, todoList, $event)"> X </button> 
+                </ng-template>
 
                 <div class="svg-container">
                     <svg class="svg-divider">

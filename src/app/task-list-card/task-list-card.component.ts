@@ -42,7 +42,7 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     this.todoList$ = this._todoService.getTodoListElement();
 
     this._todoService.getTodoListElement().subscribe(
-      (res) => {this.todoList = res}
+      (res) => {this.todoList = res; console.log("Received from server: ",res)}
     )
   }
 
@@ -148,12 +148,13 @@ export class TaskListCardComponent implements OnInit,OnChanges {
     const element = event.target.parentElement;
     if (todoTaks.isDone == "0") {
       todoTaks.isDone = "1"
-      element.setAttribute("style", "opacity:0.5; text-decoration: line-through")
+      element.setAttribute("style", "opacity:1; text-decoration: line-through")
     }
     else {
       todoTaks.isDone = "0"
       element.setAttribute("style", "opacity:1")
-    }    
+    }
+    this._todoService.putEditTodoListElement(todoTaks);    
     console.log("The task ", todoTaks.name, " change status: isDone= ", todoTaks.isDone);
   }
 

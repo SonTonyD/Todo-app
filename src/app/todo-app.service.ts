@@ -15,7 +15,7 @@ export class TodoAppService {
   private _getTodoListElement = "/api/getTodoListElement";
   private _postTodoListElement = "/api/postTodoListElement";
   private _deleteTodoListElement = "/api/deleteTodoListElement";
-  private _postEditTodoListElement = "/api/postEditTodoListElement";
+  private _putEditTodoListElement = "/api/putEditTodoListElement";
   
   httpOptions = {
     headers: new HttpHeaders({ 
@@ -36,8 +36,9 @@ export class TodoAppService {
 
   }
 
-  postEditTodoListElement( element : todoTask ) {
-
+  putEditTodoListElement( element : todoTask ) {
+    console.log("putEditTodoListElement send: ", element)
+    return this.http.put(this.IP_ADDRESS + this._getTodoListElement, element ,this.httpOptions);
   }
  
 
