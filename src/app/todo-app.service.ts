@@ -9,7 +9,12 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class TodoAppService {
 
-  private IP_ADDRESS = "http://localhost:8000";
+  //-------------LOCAL-----------------//
+  //private IP_ADDRESS = "http://localhost:8000";
+
+  //-------------PROD-----------------//
+  private IP_ADDRESS = "https://todo-app-backend-stdinh.herokuapp.com";
+  
 
   ///ROUTES
   private _getTodoListElement = "/api/getTodoListElement";
