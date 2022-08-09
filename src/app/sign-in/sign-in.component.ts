@@ -93,6 +93,7 @@ export class SignInComponent implements OnInit {
   onLogin() {
 
     localStorage.clear();
+    this.googleAuthSDK();
 
     timer(5000).subscribe(
       () => {
