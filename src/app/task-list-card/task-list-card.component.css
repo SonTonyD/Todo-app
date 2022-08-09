@@ -94,8 +94,8 @@ ul {
 .taskName {
     display: flex;
     justify-content: left;
-    cursor: move;
     font-family: JosefinSans;
+    margin-top: 3px;
 }
 
 .button-center-mobile {
@@ -163,7 +163,7 @@ button:hover {
     cursor: pointer;
 }
 
-input[type="checkbox" i] {
+input[type="checkbox"] {
     background-color: initial;
     cursor: default;
     appearance: auto;
@@ -187,6 +187,9 @@ input[type="checkbox" i] {
 
 }
 */
+
+
+
 
 @media(max-width: 1000px) {
     
@@ -356,3 +359,5 @@ input[type="checkbox" i] {
     .attribution { font-size: 7px; text-align: center; background-color: rgb(145, 142, 142); margin-left: 20vw; margin-right: 20vw; margin-top: 10vw;}
     .attribution a { color: hsl(228, 45%, 44%); }
 }
+
+
