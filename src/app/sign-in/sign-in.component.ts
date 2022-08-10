@@ -50,6 +50,8 @@ export class SignInComponent implements OnInit {
         
         this.userInfo.id = profile.getId();
         this.userInfo.name = profile.getName();
+
+        this.isLogged.emit(true);
         
         
 
@@ -97,7 +99,10 @@ export class SignInComponent implements OnInit {
 
     timer(5000).subscribe(
       () => {
-        this.isLogged.emit(true);
+        if (!!localStorage.getItem('id') == true) {
+          this.isLogged.emit(true);
+        }
+        
         console.log("coucou")
       }
     )
